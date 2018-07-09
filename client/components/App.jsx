@@ -1,13 +1,12 @@
 import React from 'react';
-// import Menu from './Menu.jsx';
 import ImageCarousel from './ImageCarousel';
-// import { Route,NavLink,HashRouter } from "react-router-dom";
+import DropdownMenu from './DropdownMenu';
 import Search from './Search';
 import Charities from './Charities';
 import Registration from './Registration';
 import $ from 'jquery';
 import Sticky from 'react-stickynode';
-import Particles from 'react-particles-js';
+// import { Route,NavLink,HashRouter } from "react-router-dom";
 
 class App extends React.Component {
   constructor(props) {
@@ -22,6 +21,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getCharities();
+    // this.getPhotos();
   }
 
   getCharities() {
@@ -40,21 +40,21 @@ class App extends React.Component {
    });
   }
 
-  // getPhotos() {
-  //   $.ajax({
-  //     url: '/images',
-  //     method: 'GET',
-  //     success: (response) => {
-  //       // console.log(response.results);
-  //       this.setState ({
-  //         photos: response.data
-  //       });
-  //     }, 
-  //     error: (err) => {
-  //       console.log('you failed', err);
-  //     }
-  //   });  
-  // }
+  getPhotos() {
+    $.ajax({
+      url: '/images',
+      method: 'GET',
+      success: (response) => {
+        // console.log(response);
+        this.setState ({
+          photos: response
+        });
+      }, 
+      error: (err) => {
+        console.log('you failed', err);
+      }
+    });  
+  }
 
   getSearch() {
     $.ajax({
@@ -96,8 +96,7 @@ class App extends React.Component {
       <div>
         <div className="primary-header container group">
           <div className="left-box">
-            <button>Menu
-            </button>
+            <DropdownMenu />
             <div className="search">
               <Search handleSearch={this.handleSearch.bind(this)} />
             </div>
@@ -119,7 +118,7 @@ class App extends React.Component {
             {/* <ImageCarousel /> */}
           </div>
           <div className="mt-5">
-            <Charities charities={this.state.info} searched={this.state.searched} searchInfo={this.state.searchInfo}/>
+            <Charities charities={this.state.info} searched={this.state.searched} searchInfo={this.state.searchInfo} />
           </div>
         </div>
 

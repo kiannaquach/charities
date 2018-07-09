@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Popover, Tooltip, Modal } from 'react-bootstrap';
+import { Button, Modal } from 'react-bootstrap';
 
 class Registration extends React.Component {
   constructor(props) {
@@ -25,13 +25,25 @@ class Registration extends React.Component {
     });
   }
 
-  render() {
-    const popover = (
-      <Popover id="modal-popover" title="popover">
-      </Popover>
-    );
-    const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
+  addRegistration(query) {
+    this.setState({
+      searched: !this.state.searched
+    });
 
+    $.ajax({
+      url: '/registration',
+      method: 'POST',
+      data: {query},
+      success: (data) => {
+        this.getSearch(query);
+      }, 
+      error: (err) => {
+        console.log('you failed', err);
+      }
+    });
+  }
+
+  render() {
     return(
       <div>
         <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>

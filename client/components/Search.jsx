@@ -6,7 +6,6 @@ class Search extends React.Component {
 
     this.state = {
       value: '',
-      searchInfo: [],
       searched: false,
     };
   }
@@ -18,7 +17,6 @@ class Search extends React.Component {
   }
 
   search() {
-
     this.props.handleSearch(this.state.value);
   }
 

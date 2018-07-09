@@ -9,7 +9,7 @@ const helper = require('./helper');
 
 const app = express();
 
-const port = process.env.PORT || 8080;
+const port = 8080;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -19,16 +19,18 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.post('/charities', (req, res) => {
   helper.getCharities(req.body.query)
   .then((body) => {
-    db.save(JSON.parse(body));
+    // console.log(body.body);
+    db.save(JSON.parse(body.body));
   })
   .catch((err) => {
-    // console.log('your post err', err);
+    console.log('your post err', err);
   });
 });
 
 app.get('/charities', (req, res) => {
   db.Charities.find()
   .then((data) => {
+    console.log('your db data', data)
     res.send(data);
   })
   .catch((err) => {
@@ -38,10 +40,8 @@ app.get('/charities', (req, res) => {
 });
 
 app.get('/charities-info', (req, res) => {
-  // console.log(req.body)
   axios.get(`http://data.orghunter.com/v1/charitysearch?user_key=${config.TOKEN}`)
   .then((response) => {
-    // console.log(response.data);
     res.send(response.data);
   })
   .catch((err) => {
@@ -51,18 +51,17 @@ app.get('/charities-info', (req, res) => {
 });
 
 
-// app.get('/images', (req, res) => {
+app.get('/images', (req, res) => {
 
-//   axios.get(`https://api.unsplash.com/search/photos?page=1&query=communityservice&client_id=${config.UNSPLASH}`)
-//   .then((response) => {
-//     console.log('images data', response.data.results.slice(0, 101));
-//     res.send(response.data.results.slice(0,101));
-//   })
-//   .catch((err) => {
-//     // console.log('this your error', err)
-//   });
+  axios.get(`https://api.unsplash.com/search/photos?page=1&query=communityservice&client_id=${config.UNSPLASH}`)
+  .then((response) => {
+    res.send(response.data.results);
+  })
+  .catch((err) => {
+    // console.log('this your error', err)
+  });
 
-// });
+});
 
 
 app.listen(port, () => {
