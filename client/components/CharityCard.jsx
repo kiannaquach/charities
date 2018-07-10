@@ -10,7 +10,7 @@ import MoreInfo from './MoreInfo';
 
 const styles = {
   card: {
-    maxWidth: 345,
+    maxWidth: 360,
     height: 600,
   },
   media: {
@@ -55,14 +55,16 @@ class CharityCard extends React.Component {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small" color="primary">
+                <Button size="medium" color="primary">
                   Share
                 </Button>
-                <Button size="small" color="primary" onClick={() => this.handleLearnMoreClick()}>
+                <Button size="medium" color="primary" onClick={() => this.handleLearnMoreClick()}>
                   {this.state.clicked && 
                     <MoreInfo show={this.state.clicked} charity={this.props.charity}/>
                   }
                   Learn More
+                </Button>
+                <Button size="medium" color="primary">
                 </Button>
               </CardActions>
             </Card>

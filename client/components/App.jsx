@@ -1,6 +1,7 @@
 import React from 'react';
 import ImageCarousel from './ImageCarousel';
 import DropdownMenu from './DropdownMenu';
+import Donate from './Donate';
 import Search from './Search';
 import Charities from './Charities';
 import Registration from './Registration';
@@ -74,7 +75,7 @@ class App extends React.Component {
   handleSearch(query) {
     // console.log(`${query} was searched`);
     this.setState({
-      searched: !this.state.searched
+      searched: true
     });
 
     $.ajax({
@@ -105,11 +106,11 @@ class App extends React.Component {
             <div className="register">
               <Registration />
             </div>
-            <button>DONATE!</button>
+            <Donate />
           </div>
 
-          <header id="header">
-            <div>thkq.</div>
+          <header>
+            <div id="title"><span>thkq</span></div>
           </header>
         </div>
 

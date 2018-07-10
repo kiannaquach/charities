@@ -58,7 +58,7 @@ class MoreInfo extends React.Component {
             <label><b>Score: {this.props.charity.score}</b></label>
             <br/>
             <br/>
-            <label><b>Score: {this.props.charity.acceptingDonations}</b></label>
+            <label><b>Accepting Donations: {this.props.charity.acceptingDonations}</b></label>
             <br/>
             <br/>
             <label><b>Category: {this.props.charity.category}</b></label>

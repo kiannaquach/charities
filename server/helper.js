@@ -14,7 +14,7 @@ let getCharities = (category) => {
   return new Promise((resolve, reject) => {
     request(options, (err, body) => {
       if (err) {
-        console.log('your err', err)
+        // console.log('your err', err)
         reject(err);
       } else {
         resolve(body);

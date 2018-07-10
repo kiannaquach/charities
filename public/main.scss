@@ -24,7 +24,15 @@
     border-bottom:#AFC2D5;
   }
 
+  
+  #title:hover span {
+    display:none;
+  }
+  #title:hover:before {
+    content: '🙏';
 
+  }
+  
   .left-box {
     display: inline-flex;
     float: left;
@@ -38,11 +46,11 @@
   }
 
   .search {
-    padding-left:100px;
+    padding-left:50px;
   }
 
   .register {
-    padding-right:100px;
+    padding-right:50px;
   }
 
   .row {
@@ -85,7 +93,7 @@
       margin-left: 10px;
       margin-bottom: 10px;
       // max-width: 300px;
-      width: 340px;
+      width: 360px;
   }
   .card-deck .card {
     margin-bottom: 15px;
@@ -93,10 +101,6 @@
 
   .charity-card.card {
       height: 450px;
-  }
-
-  .card-footer-badge {
-      font-size: 1rem;
   }
 
   .card-footer {
@@ -130,6 +134,10 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+  }
+
+  #true {
+    display: none !important;
   }
 }
 

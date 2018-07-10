@@ -6,7 +6,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 const styles = {
   card: {
-    'font-size': 25
+    'font-size': 25,
+    'font-family': 'lato'
   },
 };
 
