@@ -136,8 +136,9 @@ class Registration extends React.Component {
   render() {
     return(
       <div>
-        <Button bsStyle="primary" bsSize="large" onClick={this.handleShow}>
-          Registration / Login
+        {/* <button type="button" class="btn btn-light">Light</button> */}
+        <Button bsStyle="outline-info" bsSize="large" onClick={this.handleShow} style={{marginRight: '30px'}}>
+          SIGNUP / LOGIN
         </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose} style={{fontFamily: 'lato'}}>
@@ -146,7 +147,7 @@ class Registration extends React.Component {
           <Modal.Title>REGISTRATION / LOGIN</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div>
+            <div style={{fontFamily: 'lato'}}>
             <div className="form-group">
               <label>Full Name</label>
               <input className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Full Name" onChange={(e) => this.fullNameOnChange(e)}/>

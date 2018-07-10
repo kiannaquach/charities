@@ -23,10 +23,19 @@ class Search extends React.Component {
   render() {
     return(
       <div>
-        <input placeholder="join an org..." onChange={(e) => this.onChange(e)}/>
-        <button onClick={() => this.search()}>go</button>
+        <div class="col-xs-6" style={{marginLeft: '300px', marginRight: '300px'}}>
+          <div class="input-group">
+            <input className="form-control mr-sm-2 mb-0 text-black" placeholder="join an org..." onChange={(e) => this.onChange(e)}/>
+              <span class="input-group-btn" style={{paddingLeft: "50px"}}>
+                <button className="btn btn-primary" onClick={() => this.search()}>go</button>
+              </span>
+          </div>
+        </div>
+
       </div>
     );
   }
+
 }
+
 export default Search;

@@ -1,5 +1,6 @@
 #mvp {
   @import url(https://fonts.googleapis.com/css?family=Lato);
+
   * {
     -webkit-box-sizing: content-box;
        -moz-box-sizing: content-box;
@@ -11,10 +12,15 @@
        -moz-box-sizing: content-box;
             box-sizing: content-box;
   }
+
+  body {
+    font-family: 'lato', 'sans-serif';
+  }
   
   .primary-header {
     font-family: 'Lato', 'sans-serif';
     font-size: 50pt;
+    height:100px;
     text-align: center;
     overflow: hidden;
     font-weight: lighter;
@@ -24,13 +30,23 @@
     border-bottom:#AFC2D5;
   }
 
-  
+  .menu {
+    display: inline-flex;
+    float:left;
+  }
+
+  .register-button {
+    display: inline-flex;
+    float:right;
+  }
   #title:hover span {
     display:none;
   }
   #title:hover:before {
     content: '🙏';
-
+    font-size: 40pt;
+    margin-left:50px;
+    padding-left:100px;
   }
   
   .left-box {
@@ -46,7 +62,8 @@
   }
 
   .search {
-    padding-left:50px;
+    // padding-left:50px;
+    display: inline-block;
   }
 
   .register {
@@ -76,7 +93,7 @@
     // *zoom: 1;
   }
   .card-title {
-    font-size:8pt
+    font-size:10pt
   }
   .display-flex {
     display: -webkit-box!important;

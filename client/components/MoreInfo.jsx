@@ -34,11 +34,11 @@ class MoreInfo extends React.Component {
 
     return(
       <div>
-        <Modal show={this.props.show} onHide={this.handleClose}>
+        <Modal show={this.props.show} onHide={this.handleClose} style={{fontFamily: 'lato'}}>
           <Modal.Header closeButton>
             <Modal.Title>Charity Information</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body style={{fontFamily: 'lato'}}>
             <h1>{this.props.charity.charityName}</h1>
             <label><b>EIN: {this.props.charity.ein}</b></label>
             <br/>

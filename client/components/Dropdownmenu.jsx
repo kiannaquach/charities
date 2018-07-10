@@ -3,11 +3,15 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import IconButton from '@material-ui/core/IconButton';
+// import MenuIcon from '@material-ui/icons/Menu';
 
 const styles = {
   card: {
     'font-size': 25,
-    'font-family': 'lato'
+    'font-family': 'lato',
+    'color': 'black',
+    'margin-left': '30px'
   },
 };
 
@@ -36,14 +40,21 @@ class DropdownMenu extends React.Component {
 
     return(
       <div>
-      <Button
+      {/* <Button
         className={this.props.classes.card}
         aria-owns={anchorEl ? 'simple-menu' : null}
         aria-haspopup="true"
-        onClick={(e) => this.handleClick(e)}
       >
         MENU
-      </Button>
+      </Button> */}
+      <IconButton
+        className={this.props.classes.card}
+        color="inherit"
+        aria-label="Menu"
+        onClick={(e) => this.handleClick(e)}
+      >
+        <i class="fas fa-bars"></i>
+      </IconButton>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}

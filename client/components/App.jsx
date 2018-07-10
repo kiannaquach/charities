@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageCarousel from './ImageCarousel';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import DropdownMenu from './DropdownMenu';
 import Donate from './Donate';
 import Search from './Search';
@@ -95,26 +95,17 @@ class App extends React.Component {
     this.getSearch();
     return(
       <div>
-        <div className="primary-header container group">
-          <div className="left-box">
-            <DropdownMenu />
-            <div className="search">
-              <Search handleSearch={this.handleSearch.bind(this)} />
-            </div>
-          </div>
-          <div className="right-box">
-            <div className="register">
-              <Registration />
-            </div>
-            <Donate />
-          </div>
-
-          <header>
-            <div id="title"><span>thkq</span></div>
-          </header>
+        <div className="container">
+        <div className="menu"><DropdownMenu /></div>
+        <div className="register-button"><Registration /></div>
+        <div id="title" className="primary-header">
+          <span style={{marginLeft: '100px'}}>thkq.</span>
         </div>
 
-        <div className="container">
+        <Search handleSearch={this.handleSearch.bind(this)} /> 
+ 
+        {/* <Donate /> */}
+
           <div>
             {/* <ImageCarousel /> */}
           </div>
@@ -122,7 +113,6 @@ class App extends React.Component {
             <Charities charities={this.state.info} searched={this.state.searched} searchInfo={this.state.searchInfo} />
           </div>
         </div>
-
       </div>
     );
   }
