@@ -1,13 +1,13 @@
 import React from 'react';
-// import Menu from './Menu.jsx';
-import ImageCarousel from './ImageCarousel';
-// import { Route,NavLink,HashRouter } from "react-router-dom";
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import DropdownMenu from './DropdownMenu';
+import Donate from './Donate';
 import Search from './Search';
 import Charities from './Charities';
 import Registration from './Registration';
 import $ from 'jquery';
 import Sticky from 'react-stickynode';
-import Particles from 'react-particles-js';
+// import { Route,NavLink,HashRouter } from "react-router-dom";
 
 class App extends React.Component {
   constructor(props) {
@@ -22,6 +22,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getCharities();
+    // this.getPhotos();
   }
 
   getCharities() {
@@ -40,21 +41,21 @@ class App extends React.Component {
    });
   }
 
-  // getPhotos() {
-  //   $.ajax({
-  //     url: '/images',
-  //     method: 'GET',
-  //     success: (response) => {
-  //       // console.log(response.results);
-  //       this.setState ({
-  //         photos: response.data
-  //       });
-  //     }, 
-  //     error: (err) => {
-  //       console.log('you failed', err);
-  //     }
-  //   });  
-  // }
+  getPhotos() {
+    $.ajax({
+      url: '/images',
+      method: 'GET',
+      success: (response) => {
+        // console.log(response);
+        this.setState ({
+          photos: response
+        });
+      }, 
+      error: (err) => {
+        console.log('you failed', err);
+      }
+    });  
+  }
 
   getSearch() {
     $.ajax({
@@ -74,7 +75,7 @@ class App extends React.Component {
   handleSearch(query) {
     // console.log(`${query} was searched`);
     this.setState({
-      searched: !this.state.searched
+      searched: true
     });
 
     $.ajax({
@@ -94,35 +95,24 @@ class App extends React.Component {
     this.getSearch();
     return(
       <div>
-        <div className="primary-header container group">
-          <div className="left-box">
-            <button>Menu
-            </button>
-            <div className="search">
-              <Search handleSearch={this.handleSearch.bind(this)} />
-            </div>
-          </div>
-          <div className="right-box">
-            <div className="register">
-              <Registration />
-            </div>
-            <button>DONATE!</button>
-          </div>
-
-          <header id="header">
-            <div>thkq.</div>
-          </header>
+        <div className="container">
+        <div className="menu"><DropdownMenu /></div>
+        <div className="register-button"><Registration /></div>
+        <div id="title" className="primary-header">
+          <span style={{marginLeft: '100px'}}>thkq.</span>
         </div>
 
-        <div className="container">
+        <Search handleSearch={this.handleSearch.bind(this)} /> 
+ 
+        {/* <Donate /> */}
+
           <div>
             {/* <ImageCarousel /> */}
           </div>
           <div className="mt-5">
-            <Charities charities={this.state.info} searched={this.state.searched} searchInfo={this.state.searchInfo}/>
+            <Charities charities={this.state.info} searched={this.state.searched} searchInfo={this.state.searchInfo} />
           </div>
         </div>
-
       </div>
     );
   }

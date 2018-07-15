@@ -1,44 +1,101 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import MoreInfo from './MoreInfo';
+import Share from './Share';
+
+const styles = {
+  card: {
+    maxWidth: 360,
+    height: 600,
+    padding: 0,
+  },
+  media: {
+    height: 120,
+    paddingTop: '56.25%', // 16:9
+    paddingBottom: 0
+  },
+};
 
 class CharityCard extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      clicked: false
+      clicked: false,
+      heart: false,
+      share: false,
     };
+  }
+
+  handleLearnMoreClick() {
+    console.log('you clicked learn more');
+
+    this.setState({
+      clicked: !this.state.clicked
+    });
+  }
+
+  handleLikes() {
+    this.setState({
+      heart: !this.state.heart
+    })
+  }
+
+  handleShare() {
+    this.setState({
+      share: !this.state.share
+    }, () => {console.log(this.state.share)});
   }
 
   render() {
     return(
       <div className="charity-card">
         <div className="charity-card card">
-          <img className="card-img-top" src="https://images.unsplash.com/photo-1518600570419-81324064e9ae?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjMwODc5fQ&s=a190e2034e6a1bf50e05272881571b98" alt="" />
-            <div className="card-body">
-              <h4 className="card-title">{this.props.charity.charityName}</h4>
-              <h6 className="card-subtitle mb-2 text-muted">{this.props.charity.missionStatement}</h6>
-                  <p className="text-justify" style={{fontSize: '14px'}}>Accepting Donations: {this.props.charity.acceptingDonations}</p>
-                      {this.props.charity.url}
-              </div>
-              <div className="card-footer">
-                  <div className="clearfix">
-                      <div className="float-left mt-1">
-                          <Button bsStyle="info" bsSize="small">
-                            Find out more 
-                          </Button>
-        
-                          <Button bsStyle="info" bsSize="small">
-                            Donate
-                          </Button>
-                      </div>
-                      <div className="card-footer-badge float-right badge badge-primary badge-pill">
-                      </div>
-                  </div>
-              </div>
+            <Card className={this.props.classes.card}>
+              <CardMedia
+                className={this.props.classes.media}
+                image={this.props.photo}
+                title="Charity Name"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="headline" component="h2" style={{fontSize: '12pt'}}>
+                  {this.props.charity.charityName}
+                </Typography>
+                <Typography component="p" style={{fontSize: '6.60pt'}}>
+                  {this.props.charity.donationUrl}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small" color="primary" style={{padding: 0, fontSize: '8pt'}} onClick={() => {this.handleShare();}}>
+                  {this.state.share && 
+                    <Share show={this.state.share} charity={this.props.charity} />
+                  }
+                  Share
+                </Button>
+                <Button size="small" color="primary" style={{padding: 0, fontSize: '8pt'}} onClick={() => this.handleLearnMoreClick()}>
+                  {this.state.clicked && 
+                    <MoreInfo show={this.state.clicked} charity={this.props.charity}/>
+                  }
+                  Learn More
+                </Button>
+                <Button size="small" style={{padding: 0, fontSize: '8pt'}} color="primary">
+                  Donate
+                </Button>
+                <Button size="small" style={{padding: 0, fontSize: '8pt'}} color="primary" onClick={() => {this.handleLikes();}}>
+                  {!this.state.heart ? <i class="far fa-heart"></i> : <i class="fas fa-heart"></i>}
+                </Button>
+              </CardActions>
+            </Card>
           </div>
       </div>
     );
   }
 }
-export default CharityCard;
+
+export default withStyles(styles)(CharityCard);
