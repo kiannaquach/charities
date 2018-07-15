@@ -1,4 +1,4 @@
-# THKQ🙏: Charity App
+# THKQ: Charity App
 
 > Elegant inference streamlining the charity searching process.
 > Users are able to search, learn more, and like their favorite charities in this highly interactive web app.
