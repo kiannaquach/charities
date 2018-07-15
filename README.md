@@ -1,15 +1,11 @@
-# thkq.🙏: Charity App
+# THKQ.: Charity App
 
 > Elegant inference streamlining the charity searching process.
-![smaller](https://user-images.githubusercontent.com/30884335/42731240-de089626-87bd-11e8-8699-7107bd221017.gif)
-<img width="1280" alt="screen shot 2018-07-14 at 11 11 42 pm" src="https://user-images.githubusercontent.com/30884335/42731243-f41c890e-87bd-11e8-91ee-c0e499db3bee.png">
+> Users are able to search, learn more, and like their favorite charities in this highly interactive web app.
 
-## Related Projects
-
-  - https://github.com/lululemonades/productDetails
-  - https://github.com/lululemonades/reviews-component
-  - https://github.com/lululemonades/image-carousel
-  - https://github.com/lululemonades/you-may-also-like
+Responsive Mobile-Friendly App    |  Responsive Web App
+:-------------------------:|:-------------------------:
+![smaller](https://user-images.githubusercontent.com/30884335/42731240-de089626-87bd-11e8-8699-7107bd221017.gif) | <img width="500" alt="screen shot 2018-07-14 at 11 11 42 pm" src="https://user-images.githubusercontent.com/30884335/42731243-f41c890e-87bd-11e8-91ee-c0e499db3bee.png">
 
 ## Table of Contents
 
